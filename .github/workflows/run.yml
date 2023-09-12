@@ -176,10 +176,10 @@ jobs:
           cd ./community
           go run ./ --datapath=./mydata --outputname geosite-lite.dat
 
-      - name: Get geoip.dat relative files
+      - name: Get Geoip.dat relative files
         run: |
-          wget https://github.com/Misaka009982/clash-geoip/releases/download/latest/geoip.dat
-          wget https://github.com/Misaka009982/clash-geoip/releases/download/latest/geoip-lite.dat
+          wget https://github.com/Misaka009982/clash-Geoip/releases/download/latest/Geoip.dat
+          wget https://github.com/Misaka009982/clash-Geoip/releases/download/latest/Geoip-lite.dat
 
       - name: Generate fake-ip-user.yaml
         env:
@@ -194,7 +194,7 @@ jobs:
           geodata-mode: true
           geox-url:
             geosite: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/geosite-lite.dat"
-            geoip: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/geoip-lite.dat"
+            geoip: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/Geoip-lite.dat"
             mmdb: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/Country-lite.mmdb"
 
           dns:
@@ -231,7 +231,7 @@ jobs:
           geodata-mode: true
           geox-url:
             geosite: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/geosite-lite.dat"
-            geoip: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/geoip-lite.dat"
+            geoip: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/Geoip-lite.dat"
             mmdb: "https://fastly.jsdelivr.net/gh/Misaka009982/clash-geosite@release/Country-lite.mmdb"
 
           dns:
@@ -260,10 +260,10 @@ jobs:
 
       - name: Move files
         run: |
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/releases/download/latest/Country.mmdb
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/releases/download/latest/Country-lite.mmdb
-          install -Dp ./geoip.dat ./publish
-          install -Dp ./geoip-lite.dat ./publish
+          wget -P ./publish https://github.com/Misaka009982/clash-Geoip/releases/download/latest/Country.mmdb
+          wget -P ./publish https://github.com/Misaka009982/clash-Geoip/releases/download/latest/Country-lite.mmdb
+          install -Dp ./Geoip.dat ./publish
+          install -Dp ./Geoip-lite.dat ./publish
           install -Dp ./community/geosite-all.dat ./publish
           install -Dp ./community/geosite-all-lite.dat ./publish
           install -Dp ./community/geosite.dat ./publish
