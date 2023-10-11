@@ -156,13 +156,13 @@ jobs:
         run: |
           curl -sSL ${openai} | grep 'DOMAIN' | grep -v '#' | sed 's/DOMAIN-SUFFIX,//g' | sed 's/DOMAIN-KEYWORD,/keyword:/g' | sed 's/DOMAIN,/full:/g' | sed '/^\s*$/d' > ./community/mydata/telegram
 
-      - name: Generate proxy
+      - name: Generate geolocation-!cn
         run: |
           cd gfwlist2dnsmasq || exit 1
           chmod +x ./gfwlist2dnsmasq.sh
           ./gfwlist2dnsmasq.sh -l -o ../tmp/temp-proxy.txt
           curl -sSL ${proxy} | grep -v '#' | grep 'DOMAIN' | sed 's/^DOMAIN,/full:/g' | sed 's/^DOMAIN-SUFFIX,//g' | sed 's/^DOMAIN-KEYWORD,/keyword:/g' | sed '/^\s*$/d' >> ../tmp/temp-proxy.txt
-          sort --ignore-case -u ../tmp/temp-proxy.txt > ../community/mydata/proxy
+          sort --ignore-case -u ../tmp/temp-proxy.txt > ../community/mydata/geolocation-!cn
 
       - name: Generate CN
         run: |
