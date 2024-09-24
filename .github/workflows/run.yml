@@ -206,28 +206,6 @@ jobs:
           cd ./community
           go run ./ --datapath=./mydata --outputname GeoSite-lite.dat
 
-      - name: Download and unzip `sing-box core`
-        run: |
-          sing_box_version=$(curl -sSL https://api.github.com/repos/SagerNet/sing-box/releases | grep 'tag_name' | grep 'rc' | head -n 1 | sed 's/.*v//' | sed 's/".*//')
-          wget "https://github.com/SagerNet/sing-box/releases/download/v${sing_box_version}/sing-box-${sing_box_version}-linux-amd64v3.tar.gz" -O - | tar -zxf - -C ./community/
-          cp -f ./community/sing-box-${sing_box_version}-linux-amd64v3/sing-box ./community
-          cd ./community
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/Cygame.json
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/DIRECT.json
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/Synology.json
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/Proxy.json
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/PTtracker.json
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/JPgames.json
-          wget https://raw.githubusercontent.com/Misaka09982/Clash/main/Rules/Video.json
-          ./sing-box rule-set compile Cygame.json -o Cygame.srs
-          ./sing-box rule-set compile DIRECT.json -o DIRECT.srs
-          ./sing-box rule-set compile Synology.json -o Synology.srs
-          ./sing-box rule-set compile Proxy.json -o Proxy.srs
-          ./sing-box rule-set compile PTtracker.json -o PTtracker.srs
-          ./sing-box rule-set compile JPgames.json -o JPgames.srs
-          ./sing-box rule-set compile Video.json -o Video.srs
-
-
       - name: Get GeoIP.dat relative files
         run: |
           wget https://github.com/Misaka009982/clash-geoip/releases/download/latest/GeoIP.dat
@@ -328,13 +306,6 @@ jobs:
           install -Dp ./community/GeoSite-all-lite.dat ./publish
           install -Dp ./community/GeoSite.dat ./publish
           install -Dp ./community/GeoSite-lite.dat ./publish
-          install -Dp ./community/Cygame.srs ./publish
-          install -Dp ./community/DIRECT.srs ./publish
-          install -Dp ./community/Synology.srs ./publish
-          install -Dp ./community/Proxy.srs ./publish
-          install -Dp ./community/PTtracker.srs ./publish
-          install -Dp ./community/JPgames.srs ./publish
-          install -Dp ./community/Video.srs ./publish
           cd ./publish || exit 1
 
       - name: Release and upload assets
