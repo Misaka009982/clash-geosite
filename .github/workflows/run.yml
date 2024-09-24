@@ -208,8 +208,8 @@ jobs:
 
       - name: Get GeoIP.dat relative files
         run: |
-          wget https://github.com/Misaka009982/clash-geoip/raw/refs/heads/release/GeoIP.dat
-          wget https://github.com/Misaka009982/clash-geoip/raw/refs/heads/release/GeoIP-lite.dat
+          wget https://github.com/Misaka009982/geoip/raw/refs/heads/clash/geoip.dat
+          wget https://github.com/Misaka009982/geoip/raw/refs/heads/clash/geoip-lite.dat
 
       - name: Generate fake-ip-user.yaml
         env:
@@ -298,8 +298,8 @@ jobs:
 
       - name: Move files
         run: |
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/raw/refs/heads/release/Country.mmdb
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/raw/refs/heads/release/Country-lite.mmdb
+          wget -P ./publish https://github.com/Misaka009982/geoip/raw/refs/heads/clash/Country.mmdb
+          wget -P ./publish https://github.com/Misaka009982/geoip/raw/refs/heads/clash/Country-lite.mmdb
           install -Dp ./GeoIP.dat ./publish
           install -Dp ./GeoIP-lite.dat ./publish
           install -Dp ./community/GeoSite-all.dat ./publish
