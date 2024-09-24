@@ -92,7 +92,7 @@ jobs:
           
       - name: Generate microsoft-cn
         run: |
-          curl -sSL ${microsoft_cn} | grep -Ev '#|payload:' | sed 's/^- "+.//g' | sed 's/^- "/full:/g' | sed 's/"$//g' | sed '/^\s*$/d' > ./community/mydata/microsoft-cn
+          curl -sSL ${microsoft_cn} | grep -v '#' | grep 'DOMAIN' | sed 's/^DOMAIN,/full:/g' | sed 's/^DOMAIN-SUFFIX,//g' | sed 's/^DOMAIN-KEYWORD,/keyword:/g' | sed '/^\s*$/d' > ./community/mydata/microsoft-cn
 
       - name: Generate apple-cn
         run: |
