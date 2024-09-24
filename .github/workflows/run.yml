@@ -298,8 +298,8 @@ jobs:
 
       - name: Move files
         run: |
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/releases/download/latest/Country.mmdb
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/releases/download/latest/Country-lite.mmdb
+          wget -P ./publish https://github.com/Misaka009982/clash-geoip/raw/refs/heads/release/Country.mmdb
+          wget -P ./publish https://github.com/Misaka009982/clash-geoip/raw/refs/heads/release/Country-lite.mmdb
           install -Dp ./GeoIP.dat ./publish
           install -Dp ./GeoIP-lite.dat ./publish
           install -Dp ./community/GeoSite-all.dat ./publish
