@@ -20,7 +20,7 @@ jobs:
           echo "ads=https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt" >> $GITHUB_ENV
           echo "private1=https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/private" >> $GITHUB_ENV
           echo "private2=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list" >> $GITHUB_ENV
-          echo "microsoft_cn=https://rules.kr328.app/microsoft@cn.yaml" >> $GITHUB_ENV
+          echo "microsoft_cn=https://raw.githubusercontent.com/DustinWin/ruleset_geodata/refs/heads/clash-ruleset/microsoft-cn.yaml" >> $GITHUB_ENV
           echo "apple_cn=https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf" >> $GITHUB_ENV
           echo "google_cn=https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf" >> $GITHUB_ENV
           echo "games_cn1=https://rules.kr328.app/category-games@cn.yaml" >> $GITHUB_ENV
@@ -295,18 +295,6 @@ jobs:
               'geosite:cn,private': [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
           EOF
           rm -rf ./tmp
-
-      - name: Move files
-        run: |
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/releases/download/latest/Country.mmdb
-          wget -P ./publish https://github.com/Misaka009982/clash-geoip/releases/download/latest/Country-lite.mmdb
-          install -Dp ./GeoIP.dat ./publish
-          install -Dp ./GeoIP-lite.dat ./publish
-          install -Dp ./community/GeoSite-all.dat ./publish
-          install -Dp ./community/GeoSite-all-lite.dat ./publish
-          install -Dp ./community/GeoSite.dat ./publish
-          install -Dp ./community/GeoSite-lite.dat ./publish
-          cd ./publish || exit 1
 
       - name: Release and upload assets
         uses: svenstaro/upload-release-action@v2
