@@ -150,7 +150,7 @@ jobs:
 
       - name: Generate fakeip-filter
         run: |
-          curl -sSL ${fakeip-filter} | grep -v '#' | grep 'DOMAIN' | sed 's/^DOMAIN,/full:/g' | sed 's/^DOMAIN-SUFFIX,//g' | sed 's/^DOMAIN-KEYWORD,/keyword:/g' | sed '/^\s*$/d' > ./community/mydata/fakeip-filter
+          curl -sSL ${fakeip-filter}  > ./community/mydata/fakeip-filter
 
       - name: Generate openai
         run: |
